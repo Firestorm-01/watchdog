@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>WatchDog</title>
+  <link rel="stylesheet" href="popup.css" />
+</head>
+<body>
+  <div id="toast" class="toast hidden" role="status" aria-live="polite"></div>
+
+  <header class="header">
+    <h1 class="wordmark">WatchDog</h1>
+    <span id="global-status" class="global-status">—</span>
+  </header>
+
+  <main id="tracker-list" class="tracker-list"></main>
+
+  <div id="empty-state" class="empty-state hidden">
+    <p>No trackers yet.</p>
+    <p class="muted">Pick an element on any page to start monitoring.</p>
+  </div>
+
+  <footer class="footer">
+    <button id="btn-add" class="btn-primary" type="button">+ Add Tracker</button>
+  </footer>
+
+  <div id="add-panel" class="add-panel hidden">
+    <h2>New Tracker</h2>
+    <form id="add-form">
+      <label>
+        Label
+        <input type="text" id="field-label" required placeholder="e.g. Product price" />
+      </label>
+      <label>
+        URL
+        <input type="url" id="field-url" required readonly />
+      </label>
+      <label>
+        Selector
+        <input type="text" id="field-selector" required readonly />
+      </label>
+      <p id="pick-preview" class="pick-preview muted"></p>
+      <p id="shadow-warning" class="warning hidden"></p>
+      <label>
+        Check every (minutes)
+        <input type="number" id="field-interval" min="5" max="1440" value="15" />
+      </label>
+      <label>
+        Condition
+        <select id="field-condition-type">
+          <option value="">Any change</option>
+          <option value="changes">Value changes</option>
+          <option value="drops_below">Drops below</option>
+          <option value="rises_above">Rises above</option>
+          <option value="contains">Contains text</option>
+          <option value="becomes_available">Becomes available</option>
+        </select>
+      </label>
+      <label id="condition-value-wrap" class="hidden">
+        Threshold / text
+        <input type="text" id="field-condition-value" />
+      </label>
+      <label class="checkbox-label">
+        <input type="checkbox" id="field-cookies" />
+        Use browser cookies (logged-in pages)
+      </label>
+      <label>
+        Re-notify after (minutes, 0 = once per value)
+        <input type="number" id="field-renotify" min="0" max="10080" value="0" />
+      </label>
+      <div class="form-actions">
+        <button type="button" id="btn-pick" class="btn-secondary">Pick element</button>
+        <button type="submit" class="btn-primary">Save tracker</button>
+        <button type="button" id="btn-cancel-add" class="btn-ghost">Cancel</button>
+      </div>
+    </form>
+  </div>
+
+  <script type="module" src="popup.js"></script>
+</body>
+</html>

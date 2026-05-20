@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>WatchDog Options</title>
+  <link rel="stylesheet" href="options.css" />
+</head>
+<body>
+  <header>
+    <h1>WatchDog</h1>
+    <nav class="tabs">
+      <button class="tab active" data-tab="trackers">Trackers</button>
+      <button class="tab" data-tab="settings">Settings</button>
+      <button class="tab" data-tab="debug">Debug</button>
+    </nav>
+  </header>
+
+  <section id="panel-trackers" class="panel active">
+    <div class="toolbar">
+      <button id="btn-export" type="button">Export JSON</button>
+      <label class="import-label">
+        Import JSON
+        <input type="file" id="btn-import" accept="application/json" hidden />
+      </label>
+    </div>
+    <div id="trackers-full-list"></div>
+  </section>
+
+  <section id="panel-settings" class="panel">
+    <form id="settings-form">
+      <label>
+        Default check interval (minutes)
+        <input type="number" id="default-interval" min="5" max="1440" />
+      </label>
+      <label>
+        Min seconds between requests to same domain
+        <input type="number" id="domain-interval" min="1" max="120" />
+      </label>
+      <label>
+        Re-notify after (minutes, 0 = never)
+        <input type="number" id="renotify-minutes" min="0" max="10080" />
+      </label>
+      <label class="checkbox-label">
+        <input type="checkbox" id="notifications-enabled" />
+        Enable notifications
+      </label>
+      <button type="submit" class="btn-primary">Save settings</button>
+    </form>
+  </section>
+
+  <section id="panel-debug" class="panel">
+    <h3 class="section-title">Health metrics</h3>
+    <select id="metrics-tracker-select">
+      <option value="">Select a tracker…</option>
+    </select>
+    <pre id="metrics-viewer" class="metrics-viewer">No tracker selected.</pre>
+
+    <h3 class="section-title">Logs</h3>
+    <div class="debug-toolbar">
+      <select id="log-level-filter">
+        <option value="">All levels</option>
+        <option value="info">Info</option>
+        <option value="warn">Warn</option>
+        <option value="error">Error</option>
+      </select>
+      <input type="text" id="log-tracker-filter" placeholder="Filter by tracker ID" />
+      <button id="btn-copy-logs" type="button">Copy all</button>
+      <button id="btn-clear-logs" type="button">Clear logs</button>
+    </div>
+    <p id="storage-usage" class="storage-usage"></p>
+    <pre id="log-viewer"></pre>
+  </section>
+
+  <script type="module" src="options.js"></script>
+</body>
+</html>
