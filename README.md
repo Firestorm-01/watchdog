@@ -1,6 +1,6 @@
 # WatchDog
 
-A production-grade Chrome extension (Manifest V3) that monitors any element on any webpage for changes and alerts you via system notifications.
+A Chrome extension (Manifest V3) that monitors any element on any webpage for changes and alerts you via system notifications.
 
 ## Features
 
