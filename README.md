@@ -1,5 +1,5 @@
 # WatchDog
-
+⚠️Entire project needs to be tested before usage.needs fixes
 A Chrome extension (Manifest V3) that monitors any element on any webpage for changes and alerts you via system notifications.
 
 ## Features
