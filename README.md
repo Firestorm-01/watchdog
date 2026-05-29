@@ -1,5 +1,5 @@
 # WatchDog
-⚠️Entire project needs to be tested before usage.needs fixes.This is a protype.
+⚠️Entire project needs to be tested before usage.needs fixes.This is a prototype.
 A Chrome extension (Manifest V3) that monitors any element on any webpage for changes and alerts you via system notifications.
 
 ## Features
